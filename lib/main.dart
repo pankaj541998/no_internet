@@ -1,13 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_one/core/ui.dart';
-import 'package:test_one/logic/cubits/user_cubits/user_cubit.dart';
+import 'bloc_internet/with_cubit/internet_cubit.dart';
+import 'bloc_internet/with_cubit/screens/internet_check.dart';
+import 'form_validation/sign_in/sign_screen.dart';
+import 'form_validation/welcome.dart';
 
-import 'internet_connectivity/internet_connectivity.dart';
-
-void main() async{
-WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = MyClassObserver();
+void main() async {
   runApp(const MyApp());
 }
 
@@ -20,42 +20,15 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserCubit(),
+          create: (context) => InternetCubit(),
         )
       ],
       child: MaterialApp(
-        theme: Themes.defaultTheme,
         debugShowCheckedModeBanner: false,
         // onGenerateRoute: Routes.onGenerateRoute,
         // initialRoute: LogIn.pageRoute,
-        home: const InternetConnectiviy(),
+        home: const WelcomeScreen(),
       ),
     );
-  }
-}
-
-class MyClassObserver extends BlocObserver {
-  @override
-  void onCreate(BlocBase bloc) {
-    print("Crated $bloc");
-    super.onCreate(bloc);
-  }
-
-  @override
-  void onChange(BlocBase bloc, Change change) {
-    print("Change in $bloc : $change");
-    super.onChange(bloc, change);
-  }
-
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    print('change in transition $bloc : $transition');
-    super.onTransition(bloc, transition);
-  }
-
-  @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    print("Change in Error $bloc : $error : $stackTrace");
-    super.onError(bloc, error, stackTrace);
   }
 }
