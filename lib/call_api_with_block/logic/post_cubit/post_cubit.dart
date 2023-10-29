@@ -11,9 +11,7 @@ class PostCubit extends Cubit<PostState>{
 
   void getPosts() async{
     try{
-      
-
-
+    print('getPosts');
 
       // List<PostModel> posts = await baseAPI.BaseAPI();
       // emit(PostLoading());
