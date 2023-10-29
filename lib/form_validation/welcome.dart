@@ -42,6 +42,12 @@ class WelcomeScreen extends StatelessWidget {
                 onPressed: () {},
               ),
               SizedBox(height: 20),
+              
+              Text('Don\'t have an account?'),
+              CupertinoButton(
+                child: Text('Sign Up'),
+                onPressed: () {},
+              )
             ],
           ),
         ),
